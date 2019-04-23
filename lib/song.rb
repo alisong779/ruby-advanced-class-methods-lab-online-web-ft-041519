@@ -46,6 +46,7 @@ class Song
     song = self.new 
     song.name = new_name[1]   #second element - song name 
     song.artist_name = new_name[0]
+    song 
     
   end 
 
