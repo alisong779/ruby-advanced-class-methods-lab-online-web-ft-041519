@@ -1,0 +1,43 @@
+class Song
+  attr_accessor :name, :artist_name
+  @@all = []
+
+  def self.all        #reader of class var all 
+    @@all
+  end
+
+  def save
+    self.class.all << self    #the object (self), steps up and calls the class method all (class.all), shovels self into the class var all.
+  end
+
+  def self.create
+    song = self.new     #instantiating (with .new) a new Song instance, saving it to var song 
+    song.save           #calls the save method 
+    song                #returns the song 
+  end 
+
+  def self.new_by_name(name)    #arg required to pass in the name var 
+    song = self.new             #instantiates the song 
+    song.name = name            #setting song name (attr_accessor) equal to the name var passed in 
+    song                        #returns the song (not in lab instruction)
+  end  
+  
+  def self.create_by_name(name)
+    song = self.new 
+    song.name = name 
+    song.save                 #same as above method except calls the .save method here 
+    song 
+  end 
+  
+  def self.find_by_name(name)
+    @@all.detect {|song| song.name == name}          #detect returns the first for which the block is true. iterating through class var all songs, return first                                                  #match to name passed in.  
+  end 
+  
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create_by_name(name)      #used boolean operator OR (||) if the name exists return the name,
+                                                              #otherwise run code on the right and create.
+  end 
+  
+   def self.alphabetical 
+    @@all.sort_by {|song| song.name}                  #iterating through the class var array all (containing all songs), sorting by name (.name)
+  end
