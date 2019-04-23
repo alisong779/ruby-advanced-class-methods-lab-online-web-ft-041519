@@ -41,3 +41,11 @@ class Song
    def self.alphabetical 
     @@all.sort_by {|song| song.name}                  #iterating through the class var array all (containing all songs), sorting by name (.name)
   end
+
+  def self.new_from_filename(filename)
+    new_name = filename.slice(0, filename.length-4).split(" - ")        #slicing and splitting filename passed in - into new_name array
+    song = self.new                                                     #instantiating a new song 
+    song.name = new_name[1]                                             #setting the new song name to second element of new_name array [1] - song name 
+    song.artist_name = new_name[0]                                      #setting the artist  name to first element of new_name array [0]
+    song                                                                #returning the song 
+  end 
