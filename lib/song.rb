@@ -45,7 +45,7 @@ class Song
     new_name = filename.slice(0, filename.length-4).split(" - ")
     song = self.new 
     song.name = new_name[1]   #second element - song name 
-    song.artist_name = split.new_name[0]
+    song.artist_name = new_name[0]
     
   end 
 
