@@ -59,3 +59,7 @@ class Song
     song 
   end 
   
+    def self.destroy_all
+      @@all.clear                                     #clears all songs from the class var all array 
+    end 
+end 
