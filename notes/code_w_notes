@@ -49,3 +49,5 @@ class Song
     song.artist_name = new_name[0]                                      #setting the artist  name to first element of new_name array [0]
     song                                                                #returning the song 
   end 
+  
+  
